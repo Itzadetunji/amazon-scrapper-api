@@ -17,10 +17,11 @@ app.get('/', (req, res) => {
 app.get('/products/:productId', async (req, res) => {
   const {productId} = req.params;
   try{
-    const response = await request();
+    const response = await request(`${baseUrl}&url=https://www.amazon.com/dp/${productId}`);
+    res.json(response);
   }
   catch (error){
-
+    res.json(error);
   }
 })
 
